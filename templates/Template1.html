@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Protomatic Redesign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #101820;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 1.8rem;
+    }
+    .login-button {
+     background-color: #00eaff;
+     color: #001f3f;
+     padding: 0.5rem 1.2rem;
+     border-radius: 20px;
+     font-weight: 600;
+     margin-left: 1.5rem;
+     transition: background-color 0.3s ease;
+     text-decoration: none; /* Remove underline */
+    }
+    .login-button:hover {
+     background-color: #00b8cc;
+     color: white;
+     }
+    nav a {
+      margin-left: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #00b4d8;
+    }
+    .hero-banner {
+      background: #2e2e2e;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #00eaff;
+    }
+    .hero-content p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #ccc;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background-color: #00eaff;
+      color: #001f3f;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #00b8cc;
+    }
+    .features-section {
+      padding: 4rem 2rem;
+      background: #f0f4f8;
+      text-align: center;
+    }
+    .features-section h2 {
+      font-size: 2.5rem;
+      color: #001f3f;
+      margin-bottom: 0.5rem;
+    }
+    .features-section .subheading {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 3rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+    .feature-card h3 {
+      font-size: 1.3rem;
+      color: #003366;
+      margin-bottom: 0.75rem;
+    }
+    .feature-card p {
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    footer {
+      background: #101820;
+      color: #ccc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+    footer p {
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    {# Use url_for to correctly link to static files #}
+    <img src="{{ url_for('static', filename='Group 1000008859.png') }}" alt="Logo" height="80">
+    <nav>
+      {# Update links to point to Flask routes #}
+      <a href="{{ url_for('landing_page') }}">Home</a>
+      <a href="#">About</a> {# Placeholder, add route later if needed #}
+      <a href="#">Industries</a> {# Placeholder #}
+      <a href="#">Contact</a> {# Placeholder #}
+      <a href="{{ url_for('login_page') }}" class="login-button">Login</a> {# Link to the new login route #}
+    </nav>
+  </header>
+
+  <section class="hero-banner">
+    <div class="hero-content">
+      <h1>AI-Powered OCR Microservices</h1>
+      <p>Transforming raw documents into structured insights with intelligent microservice architecture.</p>
+      {# Update CTA button link if it should go somewhere specific, otherwise keep as #}
+      <a href="{{ url_for('dashboard') }}" class="cta-button">Discover the Solution</a> {# Example: Link to dashboard #}
+    </div>
+  </section>
+
+  <section id="features" class="features-section">
+    <h2>Smart Solutions Engineered for Precision</h2>
+    <p class="subheading">Harnessing AI to automate, analyze, and accelerate your data workflows.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>🔍 AI-Based Intelligent Solutions</h3>
+        <p>Automate decision-making and extract insights from unstructured data using machine learning and deep learning techniques.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📄 OCR-Based Data Extraction</h3>
+        <p>Extract structured information from documents and images with high precision OCR engines integrated with AI post-processing.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📊 Comparative Analysis & Recommendations</h3>
+        <p>Identify mismatches, calculate % accuracy, and suggest real-time corrections to maintain high-quality data pipelines.</p>
+      </div>
+      <div class="feature-card">
+        <h3>👨‍💼 ATS-Based Profile Matching</h3>
+        <p>Match resumes with job descriptions using keyword analysis and contextual AI scoring to improve hiring accuracy and speed.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Protomatic Inc. | All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap Bundle is not strictly needed for this static page,
+       but including it won't hurt if you use Bootstrap features here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
